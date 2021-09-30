@@ -1,0 +1,59 @@
+---
+title: "123190105_Ahmad Ikhwan Muzadi"
+author: "Ahmad Ikhwan Muzadi"
+date: "9/30/2021"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Melakukan import dataset "murders";
+```{r}
+library(dslabs)
+data(murders)
+```
+
+## 1. Pernyataan yang paling menggambarkan karakter dari tiap variabel pada data frame.
+```{r}
+str(murders)
+```
+Yang paling menggambarkan karakter dari tiap variabel pada data frame adalah C. Data  berisi  Nama  negara  bagian,  singkatan  dari  nama  negara  bagian,  wilayah negara bagian, dan populasi negara bagian serta jumlah total pembunuhan pada tahun 2010. Karena pernyataan C menjelaskan isi dari 5 variabel pada data frame.
+
+## 2. Apa saja nama kolom yang digunakan pada data frame?
+```{r}
+names(murders)
+```
+Ada 5 kolom pada data frame tersebut, yaitu state, abb, region, population, dan total.
+
+## 3. Gunakan  operator  aksesor  ($)  untuk  mengekstrak  informasi  singkatan  negara  dan menyimpannya pada objek “a”. Sebutkan jenis class dari objek tersebut. 
+```{r}
+a = murders$abb
+class(a)
+```
+Jenis class dari objek "a" adalah character.
+
+## 4. Gunakan tanda kurung siku untuk mengekstrak singkatan negara dan menyimpannya pada objek “b”. Tentukan apakah variabel “a” dan “b” bernilai sama?
+```{r}
+b = murders[[2]]
+a == b
+class(a)
+class(b)
+```
+Variabel "a" dan "b" bernilai sama dan classnya juga sama yaitu character apabila kurung siku yang digunakan adalah 2, jika kurung sikunya hanya 1 (murders[2]), maka nilai variabelnya tetap sama, namun jenis classnya berbeda dimana jenis class dari objek b jika kurung sikunya 1 adalah data.frame.
+
+## 5. Variabel region memiliki tipe data: factor. Dengan satu baris kode, gunakan fungsi level dan length untuk menentukan jumlah region yang dimiliki dataset. 
+```{r}
+length(levels(murders$region))
+```
+Penggunaan levels untuk mengetahui ada region apa saja, dan length untuk mengetahui jumlah region dan jumlah region pada dataset adalah 4, yaitu Northeast, South, North Central, West.
+
+## 6. Fungsi  table  dapat  digunakan  untuk  ekstraksi  data  pada  tipe  vektor  dan  menampilkan frekuensi dari setiap elemen. Dengan menerapkan fungsi tersebut, dapat diketahui jumlah state pada tiap region. Gunakan fungsi table dalam satu baris kode untuk menampilkan tabel baru yang berisi jumlah state pada tiap region. 
+```{r}
+table(murders$region)
+```
+Jumlah state pada masing-masing region yaitu 9 state di region Northeast, 17 state di region South, 12 state di region North Central, dan 13 state di region West.
